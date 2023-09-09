@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="estilo.css" media="screen" />
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat&display=swap">
+	<title>
+		TV açougue	
+	</title>
+    <script>
+        function atualizarPrecos() {
+            // Adicionar um parâmetro de consulta contendo um número aleatório à URL do arquivo precos.txt
+            var url = 'precos.txt?' + Math.random();
+
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    // Processar os dados e atualizar os preços na página
+                    atualizarPrecosNaPagina(data);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar os preços:', error);
+                });
+        }
+
+        function atualizarPrecosNaPagina(data) {
+            // Implemente aqui a lógica para atualizar os preços na página usando os dados do arquivo precos.txt
+            var linhas = data.split('\n');
+            linhas.forEach(function(linha) {
+                var partes = linha.split('=');
+                var nomeItem = partes[0].trim();
+                var preco = partes[1].trim();
+
+                var elementoSpan = document.querySelector('span.carne[data-nome="' + nomeItem + '"]');
+                if (elementoSpan) {
+                    elementoSpan.nextElementSibling.textContent = 'R$' + preco;
+                } else {
+                    console.log('Elemento não encontrado para o nome do item: ' + nomeItem);
+                }
+            });
+        }
+
+        // Chamar a função de atualizar os preços assim que a página carregar
+        window.onload = atualizarPrecos;
+        setInterval(function() {
+            location.reload();
+        }, 60000);
+    </script>
+</head>
+<body>
+	<center>
+	<div class="logo">
+		<img src="acougue.png">
+	</div>	
+	</center>
+
+	<div class="itens">
+		<table>
+			<tr>
+				<td>
+					<span class="carne" data-nome="ALCATRA C/OSSO BOVINO kg">ALCATRA C/OSSO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="MOCOTO BOVINO kg">MOCOTO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="ALCATRA C/MAMINHA kg">ALCATRA C/MAMINHA BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="MUSCULO BOVINO C/OSSO kg">MUSCULO C/OSSO BOV </span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="CARNE MOIDA 1">CARNE MOIDA 1º BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="MUSCULO BOVINO S/OSSO kg">MUSCULO S/OSSO BOV </span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="CARNE MOIDA DE 2">CARNE MOIDA 2º BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="PALETA BOVINA 7 C/OSSO kg">PALETA 7 C/OSSO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="CARNE P/ESTROGONOFE BOV">CARNE P/ESTROGONOFE BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="PALETA BOVINA S/OSSO kg">PALETA S/OSSO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="CONTRA FILE BOVINO kg">CONTRA FILE BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="PATINHO BOVINO kg">PATINHO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="COSTELA BOVINA C/OSSO kg">COSTELA C/OSSO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="PEITO BOVINO C/OSSO kg">PEITO C/OSSO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="COXAO FORA BOVINO kg">COXAO FORA BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="PEITO BOVINO S/OSSO kg">PEITO S/OSSO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="COXAO MOLE BOVINO kg">COXAO MOLE BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="RABADA BOVINA kg">RABADA BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="DOBRADINHA BOVINA kg">DOBRADINHA BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="TATU BOVINO kg">TATU BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="FIGADO BOVINO kg">FIGADO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="BISTECA SUINA C/PELE kg">BISTECA C/PELE SUINA</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="FILE DUPLO BOVINO kg">FILE DUPLO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="COSTELA SUINA C/PELE kg">COSTELA C/PELE SUINA</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="FILE SIMPLES BOVINO kg">FILE SIMPLES BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="PERNIL SUINO C/PELE kg">PERNIL C/PELE SUINO</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="LINGUA BOVINA kg">LINGUA BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="COXA + SOBRE">COXA+SOBRE COXA FRANGO LAR</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="LOMBO BOVINO C/OSSO kg">LOMBO C/OSSO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="FRANGO AVE SERRA CONGELADO kg">FRANGO AVE SERRA</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="LOMBO BOVINO S/OSSO kg">LOMBO S/OSSO BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="GALINHA VELHA AVE SERRA kg">GALINHA VELHA AVE SERRA</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class="carne" data-nome="MIOLO ALCATRA BOV  kg">MIOLO ALCATRA BOV</span>
+					<span class="preco">R$000,00</span>
+				</td>
+				<td>
+					<span class="carne" data-nome="PEITO FRANGO C/OSSO LAR kg">PEITO FRANGO C/OSSO LAR</span>
+					<span class="preco">R$000,00</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
